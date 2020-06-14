@@ -17,17 +17,10 @@ for iter = 1:num_iters
     %       of the cost function (computeCostMulti) and gradient here.
     %
 
-
-
-
-
-
-
-
-
-
-
-    % ============================================================
+    sumProd = (1/m)*sum(X.*repmat((X*theta - y), 1, size(X,2)));
+    
+    % Update theta   
+    theta = (theta' - (alpha * sumProd))';
 
     % Save the cost J in every iteration    
     J_history(iter) = computeCostMulti(X, y, theta);
