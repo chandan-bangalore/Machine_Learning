@@ -26,8 +26,8 @@ h = (1./(1+ exp(-z)))';
 % Cost function J for logistic regression
 J = (1/m)*sum(-y.*log(h) - (1 - y).*log(1 - h));
 % Gradient for logistic regression
-sumProd = X'*repmat((h - y),[1 size(X,2)]);
-grad = (1/m)*sumProd(:,1);
+sumProd = sum(X.*(h - y))';
+grad = (1/m)*sumProd;
 
 % =============================================================
 

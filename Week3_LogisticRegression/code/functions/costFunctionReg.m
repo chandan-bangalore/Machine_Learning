@@ -23,8 +23,8 @@ h = (1./(1+ exp(-z)))';
 regParam = (lambda/(2*m))*sum(theta(2:end).^2);
 J = (1/m)*sum(-y.*log(h) - (1 - y).*log(1 - h)) + regParam;
 % Gradient
-sumProd = X'*repmat((h-y),[1 size(X,2)]);
-grad = (1/m)*sumProd(:,1) + (lambda*theta./m);
+sumProd = (sum(X.*(h-y)))';
+grad = (1/m)*sumProd + (lambda*theta./m);
 % Replace grad(1)
 grad(1) = (1/m)*sum(h - y);
 
